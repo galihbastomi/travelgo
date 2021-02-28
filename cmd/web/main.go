@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/alexedwards/scs/v2"
-	"github.com/galihbastomi/travelgo/pkg/config"
-	"github.com/galihbastomi/travelgo/pkg/handlers"
-	"github.com/galihbastomi/travelgo/pkg/render"
+	"github.com/galihbastomi/travelgo/internal/config"
+	"github.com/galihbastomi/travelgo/internal/handlers"
+	"github.com/galihbastomi/travelgo/internal/render"
 )
 
 const portNumber = ":8080"

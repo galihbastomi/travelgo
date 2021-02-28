@@ -1,24 +1,21 @@
 {{template "base" .}}
 
 {{define "title"}}
-    Generals Quarters Room
+    Majors Suite's Room
 {{end}}
 
 {{define "content"}}
     <div class="container">
         <div class="row mt-4">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mx-auto d-block">
-                <img
-                        src="/static/images/generals-quarters.jpg"
-                        class="img-fluid"
-                        alt="room-image"
-                />
+                <img src="/static/images/majors.jpg" class="img-fluid" alt="room-image">
             </div>
         </div>
 
+
         <div class="row">
             <div class="col">
-                <h1 class="text-center mt-4">Generals Quarters Room</h1>
+                <h1 class="text-center mt-4">Major's Suite</h1>
                 <p>
                     This is some text. This is some Text. This is some text. This is
                     some text. This is some text. This is some textThis is some text.
@@ -43,6 +40,7 @@
     </div>
 {{end}}
 
+
 {{define "js"}}
     <script>
         document.getElementById("check-availability-btn").addEventListener("click", function() {
@@ -66,39 +64,7 @@
            </form>
         `
 
-            attention.custom({msg: html,
-                title: "Choose your date",
-
-                willOpen: () =>{
-                    const elem = document.getElementById('reservation-dates-modal')
-                    const rp = new DateRangePicker(elem, {
-                        format: 'yyyy-mm-dd',
-                        showOnFocus:true
-                    })
-                },
-
-                didOpen: () => {
-                    document.getElementById('start').removeAttribute('disabled')
-                    document.getElementById('end').removeAttribute('disabled')
-                },
-                callback: function (result){
-                    console.log("called")
-
-                    let form = document.getElementById("check-availability-form");
-                    let formData = new FormData(form);
-
-                    formData.append("csrf_token", "{{.CSRFToken}}")
-
-                    fetch('/search-availability-json',{
-                        method:"post",
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data)
-                    })
-                }
-            })
+            attention.custom({"msg": html, "title": "Choose your date"})
             // attention.error({"msg": "Hello World"})
         })
     </script>
